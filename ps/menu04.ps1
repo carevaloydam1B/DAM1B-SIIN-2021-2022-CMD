@@ -79,5 +79,6 @@ function menu {
         }
     } until ($opcion -eq "S")
 }
+#no
 menu
 #FIN
