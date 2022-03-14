@@ -15,7 +15,14 @@ function leerFichero {
 }
 #2. Lee un fichero users.csv y muestra solo los datos de las columnas Id, Username y Location.
 function leerFichero2 {
-    $fichero2 = Get-Content -Path "users.csv"
+    $fichero2 = Import-Csv .\users.csv
+    foreach($row in $fichero2){
+        $row.Id = [int]$row.Id
+        $row.Username = [string]$row.Username
+        $row.Location = [string]$row.Location
+        $row
+    }
+    pause
 }
 #3. Pide la ruta de un directorio y lista el contenido de dicho directorio usando un cmdlet.
 #4. Pide la ruta de un directorio y muestra su estructura sin ficheros (la función será la misma en el punto 4 y 5).
