@@ -10,3 +10,4 @@ function sumar($n1, $n2) {
 
 sumar $arg1 $arg2
 restar $arg1 $arg2
+#FIN
