@@ -1,16 +1,21 @@
 #Menu 04
 #1. Lee un fichero ips.txt (tendras varias ips, una por línea), haz un Test-Connection y muestra un mensaje (Conexión establecida/ Conexión fallida).
 function leerFichero {
-    $fichero = Get-Content "ps\menu04\ips.txt"
-    foreach ($linea in $fichero) {
-        $linea | Select-Object -Property @{name = 'NAME'; expression = { $linea } }
+    $fichero = Get-Content -Path "ips.txt"
+    foreach ($ip in $fichero) {
+        $cnx = Test-Connection $ip -Count 1 -Quiet
+        if($cnx){
+            Write-Host "Conexion establecida" $ip -ForegroundColor green
+        }
+        else{
+            Write-Host "Conexion fallida" $ip -ForegroundColor red
+        }
     }
     pause
 }
 #2. Lee un fichero users.csv y muestra solo los datos de las columnas Id, Username y Location.
 function leerFichero2 {
-    $fichero2 = Get-Content "ps\menu04\users.csv"
-    Write-Host $fichero2
+    $fichero2 = Get-Content -Path "users.csv"
 }
 #3. Pide la ruta de un directorio y lista el contenido de dicho directorio usando un cmdlet.
 #4. Pide la ruta de un directorio y muestra su estructura sin ficheros (la función será la misma en el punto 4 y 5).
