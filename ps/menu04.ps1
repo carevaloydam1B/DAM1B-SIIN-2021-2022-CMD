@@ -24,7 +24,7 @@ function leerFichero2 {
 }
 #3. Pide la ruta de un directorio y lista el contenido de dicho directorio usando un cmdlet.
 function rutaDirectorio{
-    [strin]$texto = Read-Host "Introduce una ruta de un directorio"
+    [string]$texto = Read-Host "Introduce una ruta de un directorio"
     Get-ChildItem -Path $texto
     Pause
 }
@@ -68,17 +68,17 @@ function menu {
     do {
         Clear-Host
         Write-Host "/********************************************************/"
-        Write-Host "/***********            Menu                 ************/"
+        Write-Host "/***********               Menu              ************/"
         Write-Host "/********************************************************/"
         Write-Host "/********************************************************/"
-        Write-Host "/***********       1. Leer fichero .txt      ***********/"   
+        Write-Host "/***********       1. Leer fichero .txt      ************/"   
         Write-Host "/***********       2. Leer fichero .csv      ************/"     
-        Write-Host "/***********        3.Mostar su ayuda        ************/"     
-        Write-Host "/******   4.  Pedir directorio                **********/"     
-        Write-Host "/******   5.  Pedir directorio               **********/"     
-        Write-Host "/******   6.                                 **********/"     
-        Write-Host "/******   7.                                 **********/"     
-        Write-Host "/******   8.  Listar grupos .txt                               **********/"     
+        Write-Host "/***********       3. Mostar su ayuda        ************/"     
+        Write-Host "/***********       4. Pedir directorio       ************/"     
+        Write-Host "/***********       5. Pedir directorio       ************/"     
+        Write-Host "/***********     6. Users Locales activos    ************/"     
+        Write-Host "/***********     7. Users Locales inactivos  ************/"     
+        Write-Host "/***********       8. Listar grupos .txt     **********/"     
         Write-Host "/***********           S. Salir              ************/"
         Write-Host "/********************************************************/"
         Write-Host "/********************************************************/"
@@ -88,30 +88,41 @@ function menu {
         [string]$opcion = Read-Host "Selecciona una opcion "
         switch ($opcion) {
             1 {
+                Clear-Host
                 leerFichero
                 menu
             }
             2 {
+                Clear-Host
                 leerFichero2
                 menu
             }
-            3 {}
+            3 {
+                Clear-Host
+                rutaDirectorio
+                menu
+            }
             4 {
+                Clear-Host
                 pideDirectorio
                 menu
             }
             5 {
+                Clear-Host
                 pideDirectorio
                 menu
             }
             6 {}
             7 {}
             8 {
+                Clear-Host
                 ListarGruposLocalesTxt
                 menu
             }
             "S" {
+                Clear-Host
                 salir
+                Pause
                 Clear-Host
             }
         }
